@@ -1,3 +1,5 @@
+import org.w3c.dom.Node;
+
 import java.util.*;
 //Node class
 public class patient {
@@ -6,6 +8,7 @@ public class patient {
     int severity; //severity means level of illness(1-10)
     int age;
     patient next;
+    //constructor
     patient() {
         id = 0;
         name = "";
@@ -41,16 +44,22 @@ class patientList{
             temp.next = pat;    //then current element.next will show temp (new element)
         }
     }
-    //removing patients to the list
+    //removing patients by id
     public void removePatient(int id) {
         if (head == null) {
             System.out.println("Patient list is empty!");
         }
         if (head.id == id) {
-            patient pat = head;
+            System.out.println("Removing patient with id " +id + head.name);
             head = head.next;
-            pat.next = null;
-            System.out.println ("Removed patient: " + pat.id + " " + pat.name);
+        }
+        patient temp = head;
+        while (temp.next != null && temp.next.id != id) {
+            temp = temp.next;
+        }
+        //if id does not exist
+        if (temp.next != null) {
+            System.out.println("Patient with id " + id + " has been not found!");
         }
     }
     //seeking elements
