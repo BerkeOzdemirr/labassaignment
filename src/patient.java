@@ -56,7 +56,6 @@ class patientList{
                 temp.next = temp.next.next;
                 break;
             }
-            temp = temp.next;
         }
     }
     //seeking elements
